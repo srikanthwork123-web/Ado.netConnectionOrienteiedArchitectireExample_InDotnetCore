@@ -104,3 +104,30 @@ string connectionString= "data source=DESKTOP-13B42NJ;integrated security=yes;En
         }
     }
 }
+/*
+ * ====================hotel meangement database==========
+CREATE procedure Usp_AddEmployee_New(@empname varchar(max),@empsalary money)  
+as  
+begin  
+set nocount on  
+insert into employee (empname,empsalary)values(@empname,@empsalary)  
+end
+=========================
+ 
+---(CRUD OPERTIONS MEANS) -- 
+CREATE  ---MEANS ADDING THE DATA INTO TABLE
+READ   ---MEANS FETCH OR SELECT THE DATA FROM DATASOURCE(LIKE..DATABASE..COLLECTIONS..ETC)
+UPDATE  ---UPDATE THE DATA INTO TABLE
+DELETE ---DELETE THE DATA INTO TABLE
+ 
+Usp_GetEmployee --This storedprocedure is used to Get the Data in to employee Table
+Usp_GetEmployeeId --This storedprocedure is used to Get the Data in to employee Table Based on Id paramter.
+Usp_AddEmployee  --This storedprocedure is used to Adding the Data in to employee Table
+Usp_UpdateEmployee --This storedprocedure is used to Updating the Data in to employee Table
+Usp_DeleteEmployee --This storedprocedure is used to Deleting the Data in to employee Table
+ 
+--TO SEE THE STOREDPROCEDURE STURCTURE USE        SP_HELPTEXT 'Usp_GetEmployee'
+ 
+1 record =1 object in c# side.
+=>here object data convered into json format with the help of dotnet
+*/
