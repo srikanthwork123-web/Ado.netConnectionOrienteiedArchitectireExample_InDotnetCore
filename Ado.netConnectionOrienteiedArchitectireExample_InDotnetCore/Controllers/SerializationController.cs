@@ -20,13 +20,13 @@ namespace Ado.netConOrienteiedArchitectire_InDotnetCore.Controllers
             //if any data you can return with the help of status code methods like(ok(),status(),BadRequst()....
             //this is one way of creaing the object for employee class and assigning the values to the properties of employee class.
 
-            Employee employee = new Employee();
+            EmployeeData employee = new EmployeeData();
             employee.Id = 1;
             employee.Name = "John Doe";
             employee.IsActive = true;
             employee.Skills = new List<string> { "C#", ".NET", "SQL" };//Assign the dummy data to list like this way
             //second way of creating object for employee class and assigning the values to the properties of employee class.
-            Employee employeeObj = new Employee()
+            EmployeeData employeeObj = new EmployeeData()
             {//Property=Value,
                 Id = 1,
                 Name = "John",
@@ -59,7 +59,7 @@ namespace Ado.netConOrienteiedArchitectire_InDotnetCore.Controllers
         //URl:http://localhost:5000/api/Serialization/DeserializeExample
         public async Task<IActionResult> GetDeserialization()
         {
-            Employee employeeObj = new Employee()
+            EmployeeData employeeObj = new EmployeeData()
             {//Property=Value,
                 Id = 1,
                 Name = "John",
@@ -68,7 +68,7 @@ namespace Ado.netConOrienteiedArchitectire_InDotnetCore.Controllers
             };
             string employeejson = JsonSerializer.Serialize(employeeObj);//object to json format convert here using Serialize method of JsonSerializer class.
             //Here we are converting the JSON string back to an Employee object using the JsonSerializer.Deserialize method. It takes a JSON string and a type as parameters and returns an object of the specified type.
-            Employee employeeJSONObj = JsonSerializer.Deserialize<Employee>(employeejson);//json format to object FORMAT convert here using Deserialize method of JsonSerializer class.
+            EmployeeData employeeJSONObj = JsonSerializer.Deserialize<EmployeeData>(employeejson);//json format to object FORMAT convert here using Deserialize method of JsonSerializer class.
             //we can read the each obect property value like this way after deserialization.
             int id = employeeJSONObj.Id;
             String name = employeeJSONObj.Name;
