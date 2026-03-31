@@ -96,5 +96,100 @@ JsonSerializer.Deserialize() → JSON Format to object Format.
 JSON uses camelCase by default in .NET Core.
 Property names are case-insensitive when deserializing.
 Strings must be in double quotes.
- 
+ ============
+Basic JSON Syntax
+
+{
+"id": 1,
+"name": "John",
+"isActive": true,
+"skills": ["C#", ".NET", "SQL"]
+}
+Key Rules
+	• Data is in key-value pairs 
+	• Keys are always strings (in quotes) 
+	• Values can be: 
+		○ string → "John" 
+		○ number → 1 
+		○ boolean → true 
+		○ array → [] 
+		○ object → {} 
+
+🔹 Model Class in .NET Core
+In .NET Core, JSON is mapped to a C# class (Model).
+Example Model
+
+public class Employee
+{
+public int Id { get; set; }
+public string Name { get; set; }
+public bool IsActive { get; set; }
+public List<string> Skills { get; set; }
+}
+
+🔹 Equivalent JSON for this Model
+
+{
+"id": 1,
+"name": "John",
+"isActive": true,
+"skills": ["C#", ".NET", "SQL"]
+}
+👉 Property names usually match JSON keys (case-insensitive by default).
+
+🔹 Serialization (C# → JSON)
+Convert object to JSON:
+==========================
+using System.Text.Json;
+
+var emp = new Employee
+{
+Id = 1,
+Name = "John",
+IsActive = true,
+Skills = new List<string> { "C#", ".NET", "SQL" }
+};
+
+string json = JsonSerializer.Serialize(emp);
+
+Console.WriteLine(json);
+Output
+
+{"id":1,"name":"John","isActive":true,"skills":["C#",".NET","SQL"]}
+
+🔹 Deserialization (JSON → C#)
+=====================================
+Convert JSON to object:
+
+string json = "{\"id\":1,\"name\":\"John\",\"isActive\":true,\"skills\":[\"C#\",\".NET\",\"SQL\"]}";
+
+Employee emp = JsonSerializer.Deserialize<Employee>(json);
+
+Console.WriteLine(emp.Name);
+
+🔹 Using JSON in ASP.NET Core Web API
+Example Controller
+
+[ApiController]
+[Route("api/[controller]")]
+public class EmployeeController : ControllerBase
+{
+[HttpPost]
+public IActionResult Create(Employee emp)
+{
+return Ok(emp);
+}
+}
+Request JSON
+
+{
+"id": 1,
+"name": "John",
+"isActive": true,
+"skills": ["C#", ".NET"]
+}
+👉 ASP.NET Core automatically:
+	• Converts JSON → Model (Deserialization) 
+	• Converts Model → JSON (Serialization) 
+
 */
