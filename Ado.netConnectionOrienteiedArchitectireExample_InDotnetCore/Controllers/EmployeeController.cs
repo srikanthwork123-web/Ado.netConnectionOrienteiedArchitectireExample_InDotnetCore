@@ -38,7 +38,10 @@ namespace Ado.netConOrienteiedArchitectire_InDotnetCore.Controllers
         [HttpGet]
         [Route("GetEmployeeById/{empid}")]
         public async Task<IActionResult> GetEmployeeById([FromRoute] int empid)
-        {
+        {//Task represents aynchronous opertion that can return a value.
+         //In this case, the method returns a Task<IActionResult>,
+         //which means it will eventually produce an IActionResult when the asynchronous operation is complete.
+         //The async keyword indicates that the method contains asynchronous code and can use the await keyword to wait for asynchronous operations to complete without blocking the thread.
             try
             {
                 var empdata = await employeeServices.GetEmployeeByEmpid(empid);
@@ -108,9 +111,10 @@ namespace Ado.netConOrienteiedArchitectire_InDotnetCore.Controllers
         [HttpDelete]
         [Route("DeleteEmployeeByEmpid")]
         public async Task<IActionResult> delete(int empid)
-        {
+        {//angular or react or mobile team will send the data to our api.
+         //that is called input Payload .(or)Request body(or)input paramtertes
             if (empid < 0)
-            {
+            {//StatusCode() is a method.this method having 2 paramters.1st one is statuscode need to pass 2.pass the userfriendly message.
                 return StatusCode(StatusCodes.Status400BadRequest, "bad request");
             }
             try
