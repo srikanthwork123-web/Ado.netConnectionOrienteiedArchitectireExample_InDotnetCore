@@ -28,7 +28,7 @@ we can use dependency injection to inject the service class into the controller 
         EmployeeServices employeeServices = new EmployeeServices();
         //if you create direact object of the class and if you use obj.methods in your Api method it is called tightly coupling.
         //To avoid the tightly coupling between the controller and service class,
-        //we can use dependency injection to inject the service class into the controller class.
+        //we can use dependency injection to inject the service class into the controller class with the help of interfaces without creating the direct of object of the class.
 
         [HttpGet]
         [Route("GetAllEmployee")]
