@@ -3,6 +3,12 @@ using System.Data;
 using Microsoft.Data.SqlClient;
 namespace Ado.netConOrienteiedArchitectire_InDotnetCore.Repositories
 {
+    /* repository class is used to interact with the database and perform CRUD operations.
+     * It contains methods that will call the stored procedures in the database and 
+     * return the results to the service layer. 
+     * The service layer will then return the results to the controller layer,
+     * which will return the results to the client. 
+     */
     public class EmployeeRepository
     {
 

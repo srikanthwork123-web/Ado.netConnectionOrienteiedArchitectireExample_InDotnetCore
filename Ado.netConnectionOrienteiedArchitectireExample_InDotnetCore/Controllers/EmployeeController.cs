@@ -9,7 +9,26 @@ namespace Ado.netConOrienteiedArchitectire_InDotnetCore.Controllers
     [ApiController]
     public class EmployeeController : ControllerBase
     {
-        EmployeeServices employeeServices=new EmployeeServices();
+        /*
+we are creating an object of EmployeeServices class to access the methods of EmployeeServices class in our controller. 
+This is called tight coupling because the controller is directly dependent on the service class. 
+ If we want to change the implementation of the service class, 
+ we will also have to change the controller class.
+ This is not a good practice because it makes our code less maintainable and less testable.
+ To avoid tight coupling,
+we can use dependency injection to inject the service class into the controller class. with the help of intervface we can avoid tightly coupling.
+ This way, we can change the implementation of the service class without changing the controller class.
+                // employeecontoler tightly coupled with EmployeeServices
+//oldway of accessing the class:
+(don't use this process.don't create the object of the class directly in the controller class because it will create tight coupling between the controller and service class.)
+                ///EmployeeServices obj=new EmployeeServices()
+
+                EmployeeServices employeeServices =new EmployeeServices();
+        */
+        EmployeeServices employeeServices = new EmployeeServices();
+        //if you create direact object of the class and if you use obj.methods in your Api method it is called tightly coupling.
+        //To avoid the tightly coupling between the controller and service class,
+        //we can use dependency injection to inject the service class into the controller class.
 
         [HttpGet]
         [Route("GetAllEmployee")]
