@@ -18,14 +18,16 @@ This is called tight coupling because the controller is directly dependent on th
  To avoid tight coupling,
 we can use dependency injection to inject the service class into the controller class. with the help of intervface we can avoid tightly coupling.
  This way, we can change the implementation of the service class without changing the controller class.
-                // employeecontoler tightly coupled with EmployeeServices
+//employeecontoler tightly coupled with EmployeeServices,if you want to access employee service methods in employee controller we need to create object 
+   and then we can acess this process is called tightly coupling.each and every request it will create objectes.
 //oldway of accessing the class:
 (don't use this process.don't create the object of the class directly in the controller class because it will create tight coupling between the controller and service class.)
                 ///EmployeeServices obj=new EmployeeServices()
 
                 EmployeeServices employeeServices =new EmployeeServices();
         */
-        EmployeeServices employeeServices = new EmployeeServices();
+        EmployeeServices employeeServices = new EmployeeServices();//this creating object for employeeservice class.we called this process as tightly coupling.
+        
         //if you create direact object of the class and if you use obj.methods in your Api method it is called tightly coupling.
         //To avoid the tightly coupling between the controller and service class,
         //we can use dependency injection to inject the service class into the controller class with the help of interfaces without creating the direct of object of the class.
@@ -35,6 +37,7 @@ we can use dependency injection to inject the service class into the controller 
         //we can write shortcut this way also [HttpGet("GetAllEmployee")] instead of writing [HttpGet] and [Route("GetAllEmployee")] separately.
         public async Task<IActionResult> GetAllEmployee()
         {
+            string FirstObjectgethascodenumber = employeeServices.GetHashCode().ToString();//you can see the object hashcode number is same for both the methods because we are creating only one object of the class and using that object to call both the methods.
             try
             { 
 //Here try block is used to handle the exceptions that may occur during the execution of the code. If any exception occurs, it will be caught in the catch block and we can return a status code with a message to the client.

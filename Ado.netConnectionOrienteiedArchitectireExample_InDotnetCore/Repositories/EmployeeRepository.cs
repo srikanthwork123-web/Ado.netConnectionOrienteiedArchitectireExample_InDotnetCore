@@ -10,7 +10,7 @@ namespace Ado.netConOrienteiedArchitectire_InDotnetCore.Repositories
      * which will return the results to the client. 
      */
     public class EmployeeRepository
-    {
+    {//in repository class we are writing the logic for Database communication code.
 
 string connectionString= "data source=DESKTOP-13B42NJ;integrated security=yes;Encrypt=True;TrustServerCertificate=True;initial catalog=hotelmanagement";
         //if you are async method then you have to use async keyword in method signature and return type should be Task or Task<T> where T is the type of data you want to return from the method.
